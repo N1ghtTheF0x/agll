@@ -1,0 +1,1 @@
+declare type ObjectOrArray<T> = Array<T> | T

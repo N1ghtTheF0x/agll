@@ -1,0 +1,16 @@
+# Generated/Fetched files
+*.gen.h
+*.gen.c
+
+gl.json
+gl.xml
+wgl.json
+wgl.xml
+glx.json
+glx.xml
+# CMake
+build
+# Clang
+.cache
+# NodeJS
+node_modules

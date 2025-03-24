@@ -1,0 +1,8 @@
+{
+	"dependencies": {
+		"fast-xml-parser": "latest"
+	},
+	"scripts": {
+		"build": "npm install --silent && node ./gen_agll.mjs"
+	}
+}

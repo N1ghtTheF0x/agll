@@ -1,0 +1,19 @@
+The Nightly License (NL)
+
+Copyright (c) 2025 N1ghtTheF0x
+
+You are allowed to:
+
+- obtain this software's code and documentation
+- use/copy/modify/merge/publish/distribute/sell this software
+
+You are required to:
+
+- include this license
+- include a text file named "peanuts.txt" next to the executable/library, containing the answer if you like peanuts
+  - this text file needs to persist in every Dependent
+  - if the target OS does not support a file system then the answer and its question should be contained in the credits, underneath this license
+- include the brand image of the license holder (https://github.com/N1ghtTheF0x)
+  - this image needs to persist in every Dependent
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
