@@ -38,14 +38,13 @@ if(existsSync(HEADER_PATH))
     rmSync(HEADER_PATH)
 writeFileSync(HEADER_PATH,agll_gen_h,"ascii")
 
-const OPENGL_DECLARE = [
-    ...commands.map((c) => `${c.name} agll_${c.realname} = 0;`)
-].join(EOL)
+const OPENGL_DECLARE = commands
+                    .map((c) => `${c.name} agll_${c.realname} = 0;`)
+                    .join(EOL)
 
-const OPENGL_CONTENT = [
-    ...commands.map((c) => `agll_${c.realname} = (${c.name})loader("${c.realname}");`),
-    "return 0;"
-].join(EOL + "    ")
+const OPENGL_CONTENT = commands
+                    .map((c) => `agll_${c.realname} = (${c.name})loader("${c.realname}");`)
+                    .join(EOL + "    ")
 
 const agll_gen_c = agll_c
 .replace("//{{OPENGL_DECLARE}}",OPENGL_DECLARE)

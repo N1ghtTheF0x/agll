@@ -2,11 +2,11 @@ import { existsSync, rmSync, writeFileSync } from "node:fs"
 import { EOL } from "node:os"
 import { HeaderBuilder } from "../cpp/header.mjs"
 import { TYPES_FILEPATH } from "./gen-types.mjs"
-import { glregistry, wglregistry } from "./registry.mjs"
+import { glregistry, glxregistry, wglregistry } from "./registry.mjs"
 import { AGLL_INCLUDE_FOLDER, resolveOA } from "../utils.mjs"
 import { resolve } from "node:path"
 import { DefineMacroBuilder } from "../cpp/macro.mjs"
-import { INCLUDE_WGL } from "../args.mjs"
+import { INCLUDE_GLX, INCLUDE_WGL } from "../args.mjs"
 
 export const ENUMS_FILEPATH = "Enums.gen.hpp"
 export const WGLENUMS_FILEPATH = "WGL" + ENUMS_FILEPATH
@@ -63,6 +63,8 @@ export function getEnums()
     const enums = get_enums(glregistry())
     if(INCLUDE_WGL)
         enums.push(...get_enums(wglregistry()))
+    if(INCLUDE_GLX)
+        enums.push(...get_enums(glxregistry()))
     return enums
 }
 

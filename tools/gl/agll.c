@@ -42,12 +42,12 @@ static int load_p(p_agll_get loader);
     static p_all_glx_get agll_glx_get;
     static int load_lib()
     {
-        opengl = dlopen("libOpenGL.so",RTLD_LAZY | RTLD_GLOBAL);
+        opengl = dlopen("libGL.so",RTLD_LAZY | RTLD_GLOBAL);
         if(!opengl)
             return AGLL_RESULT_LIBRARY_FAIL;
-        //agll_glx_get = (p_all_glx_get)dlsym(opengl,"glXGetProcAddress");
-        //if(!agll_glx_get)
-        //    return AGLL_RESULT_LIBRARY_FAIL;
+        agll_glx_get = (p_all_glx_get)dlsym(opengl,"glXGetProcAddress");
+        if(!agll_glx_get)
+            return AGLL_RESULT_LIBRARY_FAIL;
         return AGLL_RESULT_OK;
     }
     static void* get_p(const char* name)
@@ -63,6 +63,10 @@ static int load_p(p_agll_get loader);
     {
         dlclose(opengl);
     }
+#elif defined(__APPLE__)
+    #error Oh you want Apple support? WELL YOU AIN'T GETTING IT FROM ME! EITHER CREATE A PULL REQUEST, IMPLEMENT IT OR CRY IN THE CORNER!
+#else
+    #error Your environment does not support OpenGL
 #endif
 
 //{{OPENGL_DECLARE}}
@@ -90,4 +94,5 @@ void* agllGet(const char* name)
 static int load_p(p_agll_get loader)
 {
     //{{OPENGL_CONTENT}}
+    return AGLL_RESULT_OK;
 }

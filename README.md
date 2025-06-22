@@ -18,13 +18,15 @@ target_include_libraries(<target> PRIVATE agll/include)
 Now use `agllLoad` and `agllUnload` to load/unload OpenGL:
 
 ```c
-// 0 for ok, 1 is failed and 2 failed to load os opengl library (libOpenGL.so, opengl32.dll)
+// for some systems you need a OpenGL context and "make it current"
+// 0 for ok, 1 is failed and 2 failed to load os opengl library (libGL.so, opengl32.dll)
 int result = agllLoad();
 if(result == AGLL_RESULT_OK)
 {
     // do OpenGL stuff here
     // (glClear, etc.)
 }
+// destroy opengl context here
 // at end of runtime
 agllUnload();
 ```
@@ -46,7 +48,7 @@ You need:
 CMake will run `./tools/gen_agll.mjs` and it does the following:
 
 - fetch the OpenGL specification from Khronos
-- generate function typedefs and declare enums of the OpenGL specifictation
+- generate function typedefs and declare enums of the OpenGL specification
 - write to file `agll.gen.c`, `agll.gen.h`, `khrplatform.gen.h`
 
 Then you can use it like any CMake library
@@ -57,7 +59,7 @@ This script is a cli, following command line arguments are available:
 
 - `force` - force to download the specification again
 - `wgl` - include WGL specification (BROKEN RN)
-- `glx` - include GLX specification (NOT TESTED)
+- `glx` - include GLX specification (BROKEN RN)
 - `windows` - alias for `wgl`
 - `linux` - alias for `glx`
 

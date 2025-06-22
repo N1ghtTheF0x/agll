@@ -1,12 +1,12 @@
 import { EOL, type } from "node:os"
-import { glregistry, wglregistry } from "./registry.mjs"
+import { glregistry, glxregistry, wglregistry } from "./registry.mjs"
 import { AGLL_INCLUDE_FOLDER, resolveOA } from "../utils.mjs"
 import { TypeDefFunctionBuilder } from "../cpp/typedef.mjs"
 import { HeaderBuilder } from "../cpp/header.mjs"
 import { TYPES_FILEPATH } from "./gen-types.mjs"
 import { existsSync, rmSync, writeFileSync } from "node:fs"
 import { resolve } from "node:path"
-import { INCLUDE_WGL, TARGET_SYSTEM_WINDOWS } from "../args.mjs"
+import { INCLUDE_GLX, INCLUDE_WGL, TARGET_SYSTEM_WINDOWS } from "../args.mjs"
 
 export const COMMANDS_FILEPATH = "Commands.gen.hpp"
 
@@ -68,6 +68,8 @@ export function getCommands()
     const cmds = glregistry().commands.command.map(mapper)
     if(INCLUDE_WGL)
         cmds.push(...wglregistry().commands.command.map(mapper))
+    if(INCLUDE_GLX)
+        cmds.push(...glxregistry().commands.command.map(mapper))
     return cmds
 }
 
